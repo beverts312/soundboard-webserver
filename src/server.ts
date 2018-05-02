@@ -16,7 +16,7 @@ app.get('/api/sounds', (req, res) => {
     player.getAvailableSounds().then(sounds => res.send(sounds)).catch(err => res.status(500).send('An error occured'));
 });
 
-app.get('/api/sound/:filename', (req, res) => {
+app.get('/api/sounds/:filename', (req, res) => {
     player.playSound(req.params.filename).then(() => {
         res.send('success');
     }).catch((err: string) => {
