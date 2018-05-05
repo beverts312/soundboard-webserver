@@ -12,6 +12,11 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+    console.log(`${(new Date()).toLocaleString()} ${req.socket.remoteAddress.replace('::ffff:', '')} ${req.method} ${req.url}`);
+    next();
+});
+
 app.get('/api/sounds', (req, res) => {
     player.getAvailableSounds().then(sounds => res.send(sounds)).catch(err => res.status(500).send('An error occured'));
 });
